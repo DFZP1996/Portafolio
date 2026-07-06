@@ -26,22 +26,16 @@
             background-color: var(--blanco-harina);
             color: var(--azul-profundo);
             font-family: 'bc-civitas', sans-serif;
-            /* Párrafos unificados con tu portafolio */
             overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Tipografías Unificadas (Reemplazando Serifas por tu Articulat CF) */
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        .font-serif,
-        .font-title,
-        .font-display {
-            font-family: 'articulat-cf', sans-serif;
+        /* Tipografías Unificadas */
+        h1, h2, h3, h4, h5, h6,
+        .font-serif, 
+        .font-title, 
+        .font-display { 
+            font-family: 'articulat-cf', sans-serif; 
         }
 
         /* =======================================================
@@ -52,43 +46,51 @@
             transform: translateY(40px);
             transition: all 1s cubic-bezier(0.215, 0.61, 0.355, 1);
         }
-
         .reveal.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
 
-        .delay-100 {
-            transition-delay: 100ms;
-        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
 
-        .delay-200 {
-            transition-delay: 200ms;
-        }
-
-        .delay-300 {
-            transition-delay: 300ms;
-        }
-
-        /* Imágenes de exhibición con sombra elegante */
-        .showcase-img {
+        /* =======================================================
+           COMPORTAMIENTO RESPONSIVO Y ESTRUCTURA DE IMÁGENES
+           ======================================================= */
+           
+        /* Imágenes Editoriales Base */
+        .editorial-img {
             width: 100%;
             height: auto;
-            border-radius: 8px;
-            box-shadow: 0 30px 60px -15px rgba(12, 24, 40, 0.2);
+            border-radius: 12px;
+            box-shadow: 0 30px 60px -15px rgba(12, 24, 40, 0.15);
             transition: transform 0.5s ease;
             border: 1px solid rgba(12, 24, 40, 0.05);
         }
 
-        .showcase-img:hover {
-            transform: scale(1.02);
+        /* 1. ESCRITORIO: Efecto Sticky y Hover en Imágenes */
+        @media (min-width: 1024px) {
+            .sticky-col {
+                position: -webkit-sticky;
+                position: sticky;
+                top: 20vh;
+                align-self: start; 
+            }
+            .editorial-img:hover {
+                transform: scale(1.02);
+            }
         }
 
-        /* Bloques de texto pegajosos (Sticky Layout) */
-        .sticky-col {
-            position: -webkit-sticky;
-            position: sticky;
-            top: 20vh;
+        /* 2. MÓVIL: Flujo Natural y Espaciados Corregidos */
+        @media (max-width: 1023px) {
+            .editorial-img {
+                margin-top: 1.5rem;
+                box-shadow: 0 15px 35px -10px rgba(12, 24, 40, 0.2);
+            }
+            /* Reducir espacios gigantes en móvil para mejor usabilidad */
+            .mb-40 { margin-bottom: 5rem !important; }
+            .py-32 { padding-top: 5rem !important; padding-bottom: 5rem !important; }
+            .gap-20 { gap: 2.5rem !important; }
         }
 
         /* Letra Capital para párrafos introductorios */
@@ -107,15 +109,10 @@
 <body class="selection:bg-[#00557A] selection:text-[#F9F7F2]">
 
     <!-- NAVEGACIÓN -->
-    <nav id="navbar"
-        class="fixed top-0 w-full z-50 bg-[#F9F7F2]/90 backdrop-blur-md border-b border-[#0C1828]/5 transition-all duration-300">
+    <nav id="navbar" class="fixed top-0 w-full z-50 bg-[#F9F7F2]/90 backdrop-blur-md border-b border-[#0C1828]/5 transition-all duration-300">
         <div class="max-w-[1400px] mx-auto px-6 h-20 flex items-center justify-between">
-            <a href="../index.html#proyectos"
-                class="flex items-center text-[#0C1828] hover:text-[#D66D38] transition-colors text-xs font-title tracking-[0.2em] uppercase">
-                <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                        d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
-                </svg>
+            <a href="../index.html#proyectos" class="flex items-center text-[#0C1828] hover:text-[#D66D38] transition-colors text-xs font-title tracking-[0.2em] uppercase">
+                <svg class="w-4 h-4 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
                 Volver
             </a>
             <span class="font-serif italic text-xl text-[#00557A]">DC Un Gusto</span>
@@ -128,32 +125,27 @@
         <!-- 1. INTRODUCCIÓN Y PORTADA                      -->
         <!-- ============================================== -->
         <section class="max-w-[1400px] mx-auto px-6 mb-40">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 md:gap-16 items-center">
+                
                 <div class="lg:col-span-5 reveal">
-                    <p class="text-[#D66D38] font-bold tracking-[0.2em] uppercase text-xs mb-6 font-title">Guía de
-                        Estilo & Estrategia</p>
-                    <h1 class="font-serif text-6xl md:text-8xl text-[#0C1828] leading-[0.9] mb-8">
+                    <p class="text-[#D66D38] font-bold tracking-[0.2em] uppercase text-xs mb-6 font-title">Guía de Estilo & Estrategia</p>
+                    <h1 class="font-serif text-5xl md:text-6xl lg:text-8xl text-[#0C1828] leading-[0.9] mb-8">
                         La firma del <br><span class="italic text-[#00557A]">buen gusto.</span>
                     </h1>
                     <p class="text-[#0C1828]/80 text-lg md:text-xl font-light leading-relaxed mb-8">
-                        Un recorrido por la construcción de marca para "DC Un Gusto". El objetivo: posicionar la
-                        gastronomía tradicional colombiana en Madrid bajo un enfoque de indulgencia saludable.
+                        Un recorrido por la construcción de marca para "DC Un Gusto". El objetivo: posicionar la gastronomía tradicional colombiana en Madrid bajo un enfoque de indulgencia saludable.
                     </p>
                     <div class="flex gap-4">
-                        <span
-                            class="border border-[#00557A]/20 px-4 py-2 rounded-full text-xs tracking-wider uppercase text-[#00557A] font-title">Branding</span>
-                        <span
-                            class="border border-[#00557A]/20 px-4 py-2 rounded-full text-xs tracking-wider uppercase text-[#00557A] font-title">Estrategia</span>
+                        <span class="border border-[#00557A]/20 px-4 py-2 rounded-full text-[10px] md:text-xs tracking-wider uppercase text-[#00557A] font-title">Branding</span>
+                        <span class="border border-[#00557A]/20 px-4 py-2 rounded-full text-[10px] md:text-xs tracking-wider uppercase text-[#00557A] font-title">Estrategia</span>
                     </div>
                 </div>
 
                 <div class="lg:col-span-7 reveal delay-200">
                     <!-- IMG: PORTADA DEL MANUAL (Página 1) -->
-                    <div class="bg-[#0C1828] p-8 md:p-16 rounded-2xl flex items-center justify-center">
-                        <img src="DC UN GUSTO_page-0001.jpg" alt="Portada Brand Book DC"
-                            class="showcase-img shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-                            onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzBBMjI0MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNGOUY3RjIiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDAxLmpwZzwvdGV4dD48L3N2Zz4='">
+                    <!-- Ajustado el padding para móvil: p-4 sm:p-8 md:p-16 -->
+                    <div class="bg-[#0C1828] p-4 sm:p-8 md:p-16 rounded-2xl flex items-center justify-center mt-6 lg:mt-0 shadow-xl">
+                        <img src="DC UN GUSTO_page-0001.jpg" alt="Portada Brand Book DC" class="editorial-img !mt-0 shadow-[0_20px_50px_rgba(0,0,0,0.5)]" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzBBMjI0MCIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IiNGOUY3RjIiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDAxLmpwZzwvdGV4dD48L3N2Zz4='">
                     </div>
                 </div>
 
@@ -165,25 +157,21 @@
         <!-- ============================================== -->
         <section class="max-w-[1400px] mx-auto px-6 mb-40">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-
+                
                 <div class="sticky-col reveal">
                     <h2 class="font-serif text-4xl md:text-5xl text-[#00557A] mb-8">01. El Manifiesto</h2>
                     <div class="w-12 h-px bg-[#D66D38] mb-8"></div>
                     <p class="drop-cap text-lg text-[#0C1828]/80 leading-relaxed font-light mb-6">
-                        Toda gran marca necesita una declaración de intenciones. El manifiesto de DC Un Gusto no es un
-                        texto corporativo aburrido; es una carta de amor a las raíces (Cali y Pereira) y una declaración
-                        de evolución en Madrid.
+                        Toda gran marca necesita una declaración de intenciones. El manifiesto de DC Un Gusto no es un texto corporativo aburrido; es una carta de amor a las raíces (Cali y Pereira) y una declaración de evolución en Madrid.
                     </p>
                     <p class="text-lg text-[#0C1828]/80 leading-relaxed font-light mb-8">
-                        El reto de redacción fue equilibrar la "nostalgia" del migrante con el "bienestar" moderno.
-                        Dejar claro que hacemos que lo típico sea <em>fit</em>, sin que deje de ser típico.
+                        El reto de redacción fue equilibrar la "nostalgia" del migrante con el "bienestar" moderno. Dejar claro que hacemos que lo típico sea <em>fit</em>, sin que deje de ser típico.
                     </p>
                 </div>
 
                 <div class="reveal delay-200">
                     <!-- IMG: PÁGINA MANIFIESTO (Página 2) -->
-                    <img src="DC UN GUSTO_page-0002.jpg" alt="Página del Manifiesto" class="showcase-img"
-                        onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMTAwMCI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIxMDAwIiBmaWxsPSIjRThFNEQ5Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJzZXJpZiIgZm9udC1zaXplPSIyMCIgZmlsbD0iIzBBMjI0MCIgb3BhY2l0eT0iMC41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5EQyBVTiBHVVNUT19wYWdlLTAwMDIuanBnPC90ZXh0Pjwvc3ZnPg=='">
+                    <img src="DC UN GUSTO_page-0002.jpg" alt="Página del Manifiesto" class="editorial-img" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMTAwMCI+PHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIxMDAwIiBmaWxsPSIjRThFNEQ5Ii8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJzZXJpZiIgZm9udC1zaXplPSIyMCIgZmlsbD0iIzBBMjI0MCIgb3BhY2l0eT0iMC41IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj5EQyBVTiBHVVNUT19wYWdlLTAwMDIuanBnPC90ZXh0Pjwvc3ZnPg=='">
                 </div>
 
             </div>
@@ -194,24 +182,20 @@
         <!-- ============================================== -->
         <section class="max-w-[1400px] mx-auto px-6 mb-40">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-
+                
                 <div class="reveal order-last lg:order-first delay-200">
                     <!-- IMG: PÁGINA CROMATISMO (Página 5) -->
-                    <img src="DC UN GUSTO_page-0005.jpg" alt="Paleta de Colores Cromatismo" class="showcase-img"
-                        onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0U4RTREOSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMwQTIyNDAiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDA1LmpwZzwvdGV4dD48L3N2Zz4='">
+                    <img src="DC UN GUSTO_page-0005.jpg" alt="Paleta de Colores Cromatismo" class="editorial-img" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0U4RTREOSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMwQTIyNDAiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDA1LmpwZzwvdGV4dD48L3N2Zz4='">
                 </div>
 
                 <div class="sticky-col reveal">
                     <h2 class="font-serif text-4xl md:text-5xl text-[#00557A] mb-8">02. Cromatismo</h2>
                     <div class="w-12 h-px bg-[#EDA837] mb-8"></div>
                     <p class="text-lg text-[#0C1828]/80 leading-relaxed font-light mb-6">
-                        La identidad visual se planteó como un diálogo entre la naturaleza cruda y la sofisticación
-                        urbana.
+                        La identidad visual se planteó como un diálogo entre la naturaleza cruda y la sofisticación urbana. 
                     </p>
                     <p class="text-lg text-[#0C1828]/80 leading-relaxed font-light mb-8">
-                        Se definieron primarios vibrantes que evocan frescura y vitalidad (Azules), apoyados por colores
-                        complementarios cálidos que despiertan el "Apetito" (Naranja y Amarillo), y neutros profundos
-                        que aportan la elegancia necesaria para el mercado europeo.
+                        Se definieron primarios vibrantes que evocan frescura y vitalidad (Azules), apoyados por colores complementarios cálidos que despiertan el "Apetito" (Naranja y Amarillo), y neutros profundos que aportan la elegancia necesaria para el mercado europeo.
                     </p>
                 </div>
 
@@ -223,25 +207,21 @@
         <!-- ============================================== -->
         <section class="max-w-[1400px] mx-auto px-6 mb-40">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-
+                
                 <div class="sticky-col reveal">
                     <h2 class="font-serif text-4xl md:text-5xl text-[#00557A] mb-8">03. Sistema Tipográfico</h2>
                     <div class="w-12 h-px bg-[#0C1828] mb-8"></div>
                     <p class="text-lg text-[#0C1828]/80 leading-relaxed font-light mb-6">
-                        Nuestra voz se escribe con una mezcla de tradición y modernidad. La selección tipográfica
-                        refleja este equilibrio.
+                        Nuestra voz se escribe con una mezcla de tradición y modernidad. La selección tipográfica refleja este equilibrio.
                     </p>
                     <p class="text-lg text-[#0C1828]/80 leading-relaxed font-light mb-8">
-                        Utilizamos fuentes con serifa clásicas y elegantes (como AM Augusta) para los titulares de
-                        impacto, combinadas con fuentes geométricas y limpias para los textos largos y menús, asegurando
-                        legibilidad sin perder el carácter premium.
+                        Utilizamos fuentes con serifa clásicas y elegantes para los titulares de impacto, combinadas con fuentes geométricas y limpias para los textos largos y menús, asegurando legibilidad sin perder el carácter premium.
                     </p>
                 </div>
 
                 <div class="reveal delay-200">
                     <!-- IMG: PÁGINA TIPOGRAFÍA (Página 6) -->
-                    <img src="DC UN GUSTO_page-0006.jpg" alt="Sistema Tipográfico" class="showcase-img"
-                        onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgODAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iI0U4RTREOSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMwQTIyNDAiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDA2LmpwZzwvdGV4dD48L3N2Zz4='">
+                    <img src="DC UN GUSTO_page-0006.jpg" alt="Sistema Tipográfico" class="editorial-img" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgODAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iI0U4RTREOSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMwQTIyNDAiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDA2LmpwZzwvdGV4dD48L3N2Zz4='">
                 </div>
 
             </div>
@@ -250,29 +230,23 @@
         <!-- ============================================== -->
         <!-- 5. EL CÓDIGO OCULTO (NAMING Y LOGO)            -->
         <!-- ============================================== -->
-        <section class="bg-[#0C1828] py-32 mb-40 border-y border-[#00557A]/30 text-[#F9F7F2]">
+        <section class="bg-[#0C1828] py-20 md:py-32 mb-40 border-y border-[#00557A]/30 text-[#F9F7F2]">
             <div class="max-w-[1400px] mx-auto px-6">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-
+                    
                     <div class="reveal order-last lg:order-first delay-200 flex justify-center items-center h-full">
                         <!-- IMG: PÁGINA DEL GATO/NAMING (Página 8) -->
-                        <img src="DC UN GUSTO_page-0008.jpg" alt="Explicación del Logo y Naming"
-                            class="showcase-img border-none shadow-none"
-                            onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzE1MjMzNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNGOUY3RjIiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDA4LmpwZzwvdGV4dD48L3N2Zz4='">
+                        <img src="DC UN GUSTO_page-0008.jpg" alt="Explicación del Logo y Naming" class="editorial-img border-none shadow-none" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzE1MjMzNiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiNGOUY3RjIiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDA4LmpwZzwvdGV4dD48L3N2Zz4='">
                     </div>
 
                     <div class="sticky-col reveal">
                         <h2 class="font-serif text-4xl md:text-5xl text-[#F9F7F2] mb-8">04. Naming & El Gato Oculto</h2>
                         <div class="w-12 h-px bg-[#EDA837] mb-8"></div>
                         <p class="text-lg text-white/70 leading-relaxed font-light mb-6">
-                            El <em>Naming</em> es un rompecabezas con dos soluciones. Visualmente, rinde homenaje a sus
-                            creadores (Daniel y Camilo). Fonéticamente, es una orden directa al subconsciente:
-                            <strong>"Dése un gusto"</strong>.
+                            El <em>Naming</em> es un rompecabezas con dos soluciones. Visualmente, rinde homenaje a sus creadores (Daniel y Camilo). Fonéticamente, es una orden directa al subconsciente: <strong>"Dése un gusto"</strong>.
                         </p>
                         <p class="text-lg text-white/70 leading-relaxed font-light mb-8">
-                            Se integró la silueta de un gato entre las iniciales. El gato representa al maestro del buen
-                            gusto: elige bien, disfruta, se toma su tiempo y vive sin culpas. Un elemento lúdico dentro
-                            de un diseño elegante.
+                            Se integró la silueta de un gato entre las iniciales. El gato representa al maestro del buen gusto: elige bien, disfruta, se toma su tiempo y vive sin culpas. Un elemento lúdico dentro de un diseño elegante.
                         </p>
                     </div>
 
@@ -285,28 +259,24 @@
         <!-- ============================================== -->
         <section class="max-w-[1400px] mx-auto px-6 mb-40">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-
+                
                 <div class="sticky-col reveal">
                     <h2 class="font-serif text-4xl md:text-5xl text-[#00557A] mb-8">05. Arquitectura de Marca</h2>
                     <div class="w-12 h-px bg-[#D66D38] mb-8"></div>
                     <p class="text-lg text-[#0C1828]/80 leading-relaxed font-light mb-6">
-                        Para asegurar que la marca no pierda su elegancia al ser manipulada por terceros, establecimos
-                        lineamientos estrictos de planimetría y áreas de seguridad.
+                        Para asegurar que la marca no pierda su elegancia al ser manipulada por terceros, establecimos lineamientos estrictos de planimetría y áreas de seguridad.
                     </p>
                     <p class="text-lg text-[#0C1828]/80 leading-relaxed font-light mb-8">
-                        Se documentaron los usos correctos cromáticos (versiones en negativo, usos sobre fotografía y la
-                        "versión de lujo" dorada), así como las restricciones inquebrantables.
+                        Se documentaron los usos correctos cromáticos (versiones en negativo, usos sobre fotografía y la "versión de lujo" dorada), así como las restricciones inquebrantables.
                     </p>
                 </div>
 
                 <div class="reveal delay-200 flex flex-col gap-10">
                     <!-- IMG: PLANIMETRÍA (Página 10) -->
-                    <img src="DC UN GUSTO_page-0010.jpg" alt="Planimetría del Logo" class="showcase-img"
-                        onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0U4RTREOSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMwQTIyNDAiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDEwLmpwZzwvdGV4dD48L3N2Zz4='">
-
+                    <img src="DC UN GUSTO_page-0010.jpg" alt="Planimetría del Logo" class="editorial-img" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0U4RTREOSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMwQTIyNDAiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDEwLmpwZzwvdGV4dD48L3N2Zz4='">
+                    
                     <!-- IMG: USOS CORRECTOS (Página 13) -->
-                    <img src="DC UN GUSTO_page-0013.jpg" alt="Usos Correctos del Logo" class="showcase-img"
-                        onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0U4RTREOSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMwQTIyNDAiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDEzLmpwZzwvdGV4dD48L3N2Zz4='">
+                    <img src="DC UN GUSTO_page-0013.jpg" alt="Usos Correctos del Logo" class="editorial-img" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgNjAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0U4RTREOSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMwQTIyNDAiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDEzLmpwZzwvdGV4dD48L3N2Zz4='">
                 </div>
 
             </div>
@@ -317,24 +287,20 @@
         <!-- ============================================== -->
         <section class="max-w-[1400px] mx-auto px-6 mb-40">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-
+                
                 <div class="reveal order-last lg:order-first delay-200">
                     <!-- IMG: PÁGINA TONO DE VOZ (Página 17) -->
-                    <img src="DC UN GUSTO_page-0017.jpg" alt="Tono de Voz y Copywriting" class="showcase-img"
-                        onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgODAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iI0U4RTREOSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMwQTIyNDAiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDE3LmpwZzwvdGV4dD48L3N2Zz4='">
+                    <img src="DC UN GUSTO_page-0017.jpg" alt="Tono de Voz y Copywriting" class="editorial-img" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgODAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iI0U4RTREOSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMwQTIyNDAiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDE3LmpwZzwvdGV4dD48L3N2Zz4='">
                 </div>
 
                 <div class="sticky-col reveal">
                     <h2 class="font-serif text-4xl md:text-5xl text-[#00557A] mb-8">06. UX Writing & Tono</h2>
                     <div class="w-12 h-px bg-[#0C1828] mb-8"></div>
                     <p class="text-lg text-[#0C1828]/80 leading-relaxed font-light mb-6">
-                        Si "DC un gusto" fuera una persona, sería ese amigo colombiano que vive en Madrid: educado,
-                        alegre, que sabe de buena comida y que te hace sentir bienvenido al instante.
+                        Si "DC un gusto" fuera una persona, sería ese amigo colombiano que vive en Madrid: educado, alegre, que sabe de buena comida y que te hace sentir bienvenido al instante.
                     </p>
                     <p class="text-lg text-[#0C1828]/80 leading-relaxed font-light mb-8">
-                        Se definió un manual de copywriting estableciendo los "Do's & Don'ts" (Lo que decimos y lo que
-                        no). Queríamos mantener la "Hospitalidad Cafetera" sin caer en informalidades excesivas,
-                        comunicando siempre autoridad nutricional.
+                        Se definió un manual de copywriting estableciendo los "Do's & Don'ts" (Lo que decimos y lo que no). Queríamos mantener la "Hospitalidad Cafetera" sin caer en informalidades excesivas, comunicando siempre autoridad nutricional.
                     </p>
                 </div>
 
@@ -346,30 +312,24 @@
         <!-- ============================================== -->
         <section class="max-w-[1400px] mx-auto px-6 mb-40">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-start">
-
+                
                 <div class="sticky-col reveal">
                     <h2 class="font-serif text-4xl md:text-5xl text-[#00557A] mb-8">07. El Universo Tangible</h2>
                     <div class="w-12 h-px bg-[#D66D38] mb-8"></div>
                     <p class="text-lg text-[#0C1828]/80 leading-relaxed font-light mb-6">
-                        Aquí es donde la magia estratégica toca la realidad. Un sistema de <em>packaging</em> basado en
-                        la premisa: <strong class="font-bold text-[#D66D38]">"No enviamos comida, entregamos
-                            regalos"</strong>.
+                        Aquí es donde la magia estratégica toca la realidad. Un sistema de <em>packaging</em> basado en la premisa: <strong class="font-bold text-[#D66D38]">"No enviamos comida, entregamos regalos"</strong>.
                     </p>
                     <p class="text-lg text-[#0C1828]/80 leading-relaxed font-light mb-8">
-                        Uso de texturas Kraft para evocar sostenibilidad, tintas sólidas y stickers de seguridad Azul
-                        Profundo como sellos de garantía. Cada punto de contacto físico es coherente con la elegancia de
-                        la marca.
+                        Uso de texturas Kraft para evocar sostenibilidad, tintas sólidas y stickers de seguridad Azul Profundo como sellos de garantía. Cada punto de contacto físico es coherente con la elegancia de la marca.
                     </p>
                 </div>
 
                 <div class="reveal delay-200 flex flex-col gap-10">
                     <!-- IMG: EMPAQUES (Página 23) -->
-                    <img src="DC UN GUSTO_page-0023.jpg" alt="Diseño de Empaques" class="showcase-img"
-                        onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgODAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iI0U4RTREOSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMwQTIyNDAiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDIzLmpwZzwvdGV4dD48L3N2Zz4='">
-
+                    <img src="DC UN GUSTO_page-0023.jpg" alt="Diseño de Empaques" class="editorial-img" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgODAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iI0U4RTREOSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMwQTIyNDAiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDIzLmpwZzwvdGV4dD48L3N2Zz4='">
+                    
                     <!-- IMG: MENÚS (Página 21) -->
-                    <img src="DC UN GUSTO_page-0021.jpg" alt="Diseño de Menús" class="showcase-img"
-                        onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgODAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iI0U4RTREOSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMwQTIyNDAiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDIxLmpwZzwvdGV4dD48L3N2Zz4='">
+                    <img src="DC UN GUSTO_page-0021.jpg" alt="Diseño de Menús" class="editorial-img" onerror="this.onerror=null; this.src='data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgODAwIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjgwMCIgZmlsbD0iI0U4RTREOSIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0ic2VyaWYiIGZvbnQtc2l6ZT0iMjAiIGZpbGw9IiMwQTIyNDAiIG9wYWNpdHk9IjAuNSIgdGV4dC1hbmNob3I9Im1pZGRsZSI+REMgVU4gR1VTVE9fcGFnZS0wMDIxLmpwZzwvdGV4dD48L3N2Zz4='">
                 </div>
 
             </div>
@@ -378,42 +338,40 @@
         <!-- ============================================== -->
         <!-- 9. GALERÍA FINAL: EL MANUAL COMPLETO           -->
         <!-- ============================================== -->
-        <section class="bg-[#F4F1E9] py-32 border-t border-[#00557A]/10">
+        <section class="bg-[#F4F1E9] py-20 md:py-32 border-t border-[#00557A]/10">
             <div class="max-w-[1600px] mx-auto px-6">
-
+                
                 <div class="text-center mb-16 reveal">
-                    <h2 class="font-serif text-4xl md:text-5xl text-[#0C1828] mb-4">Explora el Manual Completo</h2>
-                    <p class="text-lg text-[#0C1828]/60 font-light max-w-2xl mx-auto">Visión general de las 24 páginas
-                        del <em>Brand Book</em>, donde se condensa toda la arquitectura, historia y reglas visuales de
-                        DC Un Gusto.</p>
+                    <h2 class="font-serif text-3xl md:text-5xl text-[#0C1828] mb-4">Explora el Manual Completo</h2>
+                    <p class="text-sm md:text-lg text-[#0C1828]/60 font-light max-w-2xl mx-auto">Visión general de las 24 páginas del <em>Brand Book</em>, donde se condensa toda la arquitectura, historia y reglas visuales de DC Un Gusto.</p>
                 </div>
 
-                <!-- Cuadrícula automática de las 24 páginas -->
-                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 reveal delay-200">
-                    <img src="DC UN GUSTO_page-0001.jpg" class="showcase-img border border-slate-200" alt="Página 1">
-                    <img src="DC UN GUSTO_page-0002.jpg" class="showcase-img border border-slate-200" alt="Página 2">
-                    <img src="DC UN GUSTO_page-0003.jpg" class="showcase-img border border-slate-200" alt="Página 3">
-                    <img src="DC UN GUSTO_page-0004.jpg" class="showcase-img border border-slate-200" alt="Página 4">
-                    <img src="DC UN GUSTO_page-0005.jpg" class="showcase-img border border-slate-200" alt="Página 5">
-                    <img src="DC UN GUSTO_page-0006.jpg" class="showcase-img border border-slate-200" alt="Página 6">
-                    <img src="DC UN GUSTO_page-0007.jpg" class="showcase-img border border-slate-200" alt="Página 7">
-                    <img src="DC UN GUSTO_page-0008.jpg" class="showcase-img border border-slate-200" alt="Página 8">
-                    <img src="DC UN GUSTO_page-0009.jpg" class="showcase-img border border-slate-200" alt="Página 9">
-                    <img src="DC UN GUSTO_page-0010.jpg" class="showcase-img border border-slate-200" alt="Página 10">
-                    <img src="DC UN GUSTO_page-0011.jpg" class="showcase-img border border-slate-200" alt="Página 11">
-                    <img src="DC UN GUSTO_page-0012.jpg" class="showcase-img border border-slate-200" alt="Página 12">
-                    <img src="DC UN GUSTO_page-0013.jpg" class="showcase-img border border-slate-200" alt="Página 13">
-                    <img src="DC UN GUSTO_page-0014.jpg" class="showcase-img border border-slate-200" alt="Página 14">
-                    <img src="DC UN GUSTO_page-0015.jpg" class="showcase-img border border-slate-200" alt="Página 15">
-                    <img src="DC UN GUSTO_page-0016.jpg" class="showcase-img border border-slate-200" alt="Página 16">
-                    <img src="DC UN GUSTO_page-0017.jpg" class="showcase-img border border-slate-200" alt="Página 17">
-                    <img src="DC UN GUSTO_page-0018.jpg" class="showcase-img border border-slate-200" alt="Página 18">
-                    <img src="DC UN GUSTO_page-0019.jpg" class="showcase-img border border-slate-200" alt="Página 19">
-                    <img src="DC UN GUSTO_page-0020.jpg" class="showcase-img border border-slate-200" alt="Página 20">
-                    <img src="DC UN GUSTO_page-0021.jpg" class="showcase-img border border-slate-200" alt="Página 21">
-                    <img src="DC UN GUSTO_page-0022.jpg" class="showcase-img border border-slate-200" alt="Página 22">
-                    <img src="DC UN GUSTO_page-0023.jpg" class="showcase-img border border-slate-200" alt="Página 23">
-                    <img src="DC UN GUSTO_page-0024.jpg" class="showcase-img border border-slate-200" alt="Página 24">
+                <!-- Cuadrícula de las 24 páginas -->
+                <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 reveal delay-200">
+                    <img src="DC UN GUSTO_page-0001.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 1">
+                    <img src="DC UN GUSTO_page-0002.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 2">
+                    <img src="DC UN GUSTO_page-0003.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 3">
+                    <img src="DC UN GUSTO_page-0004.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 4">
+                    <img src="DC UN GUSTO_page-0005.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 5">
+                    <img src="DC UN GUSTO_page-0006.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 6">
+                    <img src="DC UN GUSTO_page-0007.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 7">
+                    <img src="DC UN GUSTO_page-0008.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 8">
+                    <img src="DC UN GUSTO_page-0009.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 9">
+                    <img src="DC UN GUSTO_page-0010.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 10">
+                    <img src="DC UN GUSTO_page-0011.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 11">
+                    <img src="DC UN GUSTO_page-0012.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 12">
+                    <img src="DC UN GUSTO_page-0013.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 13">
+                    <img src="DC UN GUSTO_page-0014.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 14">
+                    <img src="DC UN GUSTO_page-0015.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 15">
+                    <img src="DC UN GUSTO_page-0016.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 16">
+                    <img src="DC UN GUSTO_page-0017.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 17">
+                    <img src="DC UN GUSTO_page-0018.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 18">
+                    <img src="DC UN GUSTO_page-0019.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 19">
+                    <img src="DC UN GUSTO_page-0020.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 20">
+                    <img src="DC UN GUSTO_page-0021.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 21">
+                    <img src="DC UN GUSTO_page-0022.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 22">
+                    <img src="DC UN GUSTO_page-0023.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 23">
+                    <img src="DC UN GUSTO_page-0024.jpg" class="w-full h-auto object-cover rounded-md border border-slate-200 shadow-sm hover:scale-105 transition-transform" alt="Página 24">
                 </div>
             </div>
         </section>
@@ -422,8 +380,7 @@
 
     <!-- FOOTER -->
     <footer class="bg-[#0C1828] pt-24 pb-12 px-6 text-center">
-        <h2 class="font-serif text-3xl md:text-5xl text-[#F9F7F2] mb-12 italic reveal">"Este libro es solo el mapa.
-            <br>Ustedes son el viaje."</h2>
+        <h2 class="font-serif text-3xl md:text-5xl text-[#F9F7F2] mb-12 italic reveal">"Este libro es solo el mapa. <br>Ustedes son el viaje."</h2>
         <div class="w-px h-16 bg-white/20 mx-auto mb-12 reveal delay-100"></div>
         <p class="text-white/50 text-xs font-title tracking-widest uppercase reveal delay-200">
             &copy; 2026 Daniel F. Zamora Pineda &mdash; Brand Strategy & Identity
@@ -458,5 +415,4 @@
         });
     </script>
 </body>
-
 </html>
